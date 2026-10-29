@@ -1,0 +1,7 @@
+{% extends "base.html" %}{% block body %}
+<section class="wrap sec"><div class="card formcard"><h1>Report a problem</h1><p class="muted">Tell us what is wrong. All fields are required.</p>
+<form method="post"><label for="title">Title</label><input id="title" name="title" placeholder="e.g. Projector not working" value="{{ form.get('title','') }}">
+<label for="category">Category</label><select id="category" name="category"><option value="">Choose a category…</option>{% for c in categories %}<option {{ 'selected' if form.get('category')==c }}>{{ c }}</option>{% endfor %}</select>
+<label for="description">Description</label><textarea id="description" name="description" rows="5" placeholder="Where is it and what happened?">{{ form.get('description','') }}</textarea>
+<button class="btn big">Submit complaint</button></form></div></section>
+{% endblock %}

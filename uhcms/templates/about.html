@@ -1,0 +1,13 @@
+{% extends "base.html" %}{% from "_icons.html" import ic with context %}{% block title %}About – Campus Helpdesk{% endblock %}{% block body %}
+<section class="wrap sec"><h1>About Campus Helpdesk</h1>
+<p class="lead dark">University Helpdesk &amp; Complaint Management System (UHCMS) replaces scattered calls, emails and messages with one organised platform.</p>
+<div class="grid3"><article class="card hov"><span class="ibox">{{ ic('target') }}</span><h3>Purpose</h3><p>Make sure no student complaint is lost, delayed or ignored.</p></article>
+<article class="card hov"><span class="ibox">{{ ic('eye') }}</span><h3>Vision</h3><p>A campus where every issue is visible, owned and resolved.</p></article>
+<article class="card hov"><span class="ibox">{{ ic('check') }}</span><h3>Goals</h3><p>Faster response, clear accountability and simple reporting.</p></article>
+<article class="card hov"><span class="ibox">{{ ic('user') }}</span><h3>For students</h3><p>Submit, track and comment on complaints from any device.</p></article>
+<article class="card hov"><span class="ibox">{{ ic('users') }}</span><h3>For staff</h3><p>One list of complaints with simple status updates.</p></article>
+<article class="card hov"><span class="ibox">{{ ic('code') }}</span><h3>Built with</h3><p>Python, Flask, SQLite, HTML, CSS and JavaScript.</p></article></div>
+<h2>Developed by – Project Team</h2><div class="grid3">
+{% for n,i,d in TEAM %}<article class="card team hov"><span class="av">{{ n[0] }}</span><h3>{{ n }}</h3><p>CMS ID: {{ i }}</p><p class="muted">{{ d }}</p>
+<div class="soc"><a href="#" aria-label="LinkedIn profile of {{ n }}">{{ ic('link') }}</a><a href="#" aria-label="GitHub profile of {{ n }}">{{ ic('code') }}</a><a href="#" aria-label="Email {{ n }}">{{ ic('mail') }}</a></div></article>{% endfor %}</div></section>
+{% endblock %}

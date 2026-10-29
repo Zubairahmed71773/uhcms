@@ -1,0 +1,34 @@
+{% extends "base.html" %}{% from "_icons.html" import ic with context %}{% block body %}
+<section class="hero"><div class="wrap hero-in"><div>
+<span class="pill">University helpdesk, simplified</span>
+<h1>Fix campus problems faster, together.</h1>
+<p class="lead">One place for students to report IT, classroom, lab, transport and hostel issues, and for staff to resolve them with full visibility.</p>
+<div class="cta">{% if g.user %}<a class="btn big" href="{{ url_for('dashboard') }}">Open dashboard</a>{% else %}<a class="btn big" href="{{ url_for('register') }}">Get started free</a><a class="btn big ghost" href="{{ url_for('login') }}">Log in</a>{% endif %}</div></div>
+<div class="mock glass" aria-hidden="true"><div class="mtop"><i></i><i></i><i></i></div>
+<div class="mrow"><b>CMP-001</b><span class="badge sOpen">Open</span></div><p>Projector in Lab 3 does not power on</p>
+<div class="mrow"><b>CMP-002</b><span class="badge sInProgress">In Progress</span></div><p>Wi-Fi down in Hostel B</p>
+<div class="mrow"><b>CMP-003</b><span class="badge sResolved">Resolved</span></div><p>Bus timing corrected</p></div></div></section>
+<section class="wrap stats reveal"><div><strong data-count="4">0</strong><span>Status stages</span></div><div><strong data-count="6">0</strong><span>Complaint categories</span></div><div><strong data-count="2">0</strong><span>User roles</span></div><div><strong data-count="100" data-suffix="%">0</strong><span>Complaints tracked</span></div></section>
+<section id="features" class="wrap sec reveal"><h2>Everything you need to resolve issues</h2><div class="grid3">
+<article class="card hov"><span class="ibox">{{ ic('pencil') }}</span><h3>Easy reporting</h3><p>Describe the problem, pick a category and submit in under a minute.</p></article>
+<article class="card hov"><span class="ibox">{{ ic('activity') }}</span><h3>Live tracking</h3><p>Every complaint gets a unique ID and a clear status from Open to Closed.</p></article>
+<article class="card hov"><span class="ibox">{{ ic('message') }}</span><h3>Comments</h3><p>Students and staff talk on the complaint itself, so nothing gets lost.</p></article>
+<article class="card hov"><span class="ibox">{{ ic('layout') }}</span><h3>Dashboard</h3><p>Charts and counters show what is open, in progress and resolved.</p></article>
+<article class="card hov"><span class="ibox">{{ ic('shield') }}</span><h3>Private and secure</h3><p>Hashed passwords. Students only see their own complaints.</p></article>
+<article class="card hov"><span class="ibox">{{ ic('phone') }}</span><h3>Works everywhere</h3><p>Responsive layout for phones, tablets and desktops.</p></article></div></section>
+<section id="about" class="band"><div class="wrap sec narrowp reveal"><h2>About Campus Helpdesk</h2>
+<p>Campus Helpdesk is a simple web platform where students report university problems and helpdesk staff resolve them. Every complaint gets a unique ID, a clear status and a comment thread, so nothing is lost and everyone knows what is happening.</p>
+<p><a href="{{ url_for('about') }}">Read more about our purpose and vision</a></p></div></section>
+<section class="band"><div class="wrap sec reveal"><h2>What users say <small class="muted">(sample feedback for demonstration)</small></h2><div class="grid3">
+<blockquote class="card">“I finally know who is handling my complaint.”<footer>Student, example</footer></blockquote>
+<blockquote class="card">“One list instead of scattered messages.”<footer>Helpdesk officer, example</footer></blockquote>
+<blockquote class="card">“Reports are easy to follow and review.”<footer>Administrator, example</footer></blockquote></div></div></section>
+<section id="faq" class="wrap sec narrowp reveal"><h2>Frequently asked questions</h2>
+<details class="card"><summary>Who can submit a complaint?</summary><p>Any registered student. Create an account with your university email.</p></details>
+<details class="card"><summary>Who can see my complaint?</summary><p>You and the helpdesk staff. Other students cannot see it.</p></details>
+<details class="card"><summary>How do I know it is being fixed?</summary><p>Open the complaint to see its status and staff comments.</p></details></section>
+<section id="team" class="wrap sec reveal"><h2>Developed by</h2><div class="grid3">
+{% for n,i,d in TEAM %}<article class="card team hov"><span class="av">{{ n[0] }}</span><h3>{{ n }}</h3><p>CMS ID: {{ i }}</p><p class="muted">{{ d }}</p></article>{% endfor %}</div></section>
+<section id="contact" class="band"><div class="wrap sec narrowp reveal"><h2>Contact the helpdesk</h2>
+<form id="contactform" class="card"><label for="cn">Name</label><input id="cn" required><label for="ce">Email</label><input id="ce" type="email" required><label for="cm">Message</label><textarea id="cm" rows="4" required></textarea><button class="btn big">Send message</button></form></div></section>
+{% endblock %}

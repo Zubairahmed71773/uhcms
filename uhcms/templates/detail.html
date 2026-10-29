@@ -1,0 +1,9 @@
+{% extends "base.html" %}{% block body %}
+<section class="wrap sec narrowp"><a class="muted" href="{{ url_for('dashboard') }}">← Back to dashboard</a>
+<div class="card"><div class="dhead"><h1>{{ c['id']|cid }} · {{ c['title'] }}</h1><span class="badge big s{{ c['status']|replace(' ','') }}">{{ c['status'] }}</span></div>
+<p class="muted">{{ c['category'] }} · Submitted by {{ c['author'] }} on {{ c['created_at'][:16] }}</p><p>{{ c['description'] }}</p>
+{% if g.user['role']=='staff' %}<form method="post" action="{{ url_for('set_status', cid=c['id']) }}" class="inline"><label for="status">Update status</label>
+<select id="status" name="status">{% for s in statuses %}<option {{ 'selected' if s==c['status'] }}>{{ s }}</option>{% endfor %}</select><button class="btn">Save status</button></form>{% endif %}</div>
+<div class="card"><h2>Comments</h2>{% for m in comments %}<div class="comment"><strong>{{ m['name'] }}</strong><span class="muted"> · {{ m['created_at'][:16] }}</span><p>{{ m['text'] }}</p></div>{% else %}<p class="muted">No comments yet.</p>{% endfor %}
+<form method="post" action="{{ url_for('add_comment', cid=c['id']) }}"><label for="text">Add a comment</label><textarea id="text" name="text" rows="3"></textarea><button class="btn">Post comment</button></form></div></section>
+{% endblock %}

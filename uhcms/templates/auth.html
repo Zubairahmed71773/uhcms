@@ -1,0 +1,13 @@
+{% extends "base.html" %}{% block title %}{{ 'Sign up' if mode=='register' else 'Log in' }} – Campus Helpdesk{% endblock %}{% block body %}
+<section class="wrap authwrap"><div class="authside"><h2>{{ 'Join Campus Helpdesk' if mode=='register' else 'Welcome back' }}</h2>
+<p>Report campus problems and follow every update in one place.</p><ul><li>Unique complaint IDs</li><li>Live status tracking</li><li>Private to you and the helpdesk</li></ul></div>
+<div class="card authcard"><h1>{{ 'Create your account' if mode=='register' else 'Log in to your account' }}</h1>
+<form method="post" data-validate novalidate>
+{% if mode=='register' %}<label for="name">Full name</label><input id="name" name="name" placeholder="e.g. Ali Khan" autocomplete="name" required>{% endif %}
+<label for="email">University email</label><input id="email" name="email" type="email" placeholder="you@uni.edu" autocomplete="email" required>
+<label for="password">Password</label><div class="pw"><input id="password" name="password" type="password" {% if mode=='register' %}data-min="6"{% endif %} placeholder="{{ 'At least 6 characters' if mode=='register' else 'Your password' }}" autocomplete="{{ 'new-password' if mode=='register' else 'current-password' }}" required><button type="button" class="link" data-toggle-pw="password" aria-pressed="false">Show</button></div>
+<p class="err" role="alert"></p>
+{% if mode=='login' %}<p class="right"><a href="{{ url_for('forgot') }}">Forgot password?</a></p>{% endif %}
+<button class="btn big full">{{ 'Create account' if mode=='register' else 'Log in' }}</button></form>
+<p class="muted center">{% if mode=='login' %}New here? <a href="{{ url_for('register') }}">Create an account</a>{% else %}Already registered? <a href="{{ url_for('login') }}">Log in</a>{% endif %}</p></div></section>
+{% endblock %}
